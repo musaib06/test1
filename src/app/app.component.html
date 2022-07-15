@@ -1,43 +1,4 @@
-<style>
-  .container{
-    margin: 30px 40px;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  .control{
-    margin: 20px
-  }
-</style>
-<div class="container">
-  <form #dataForm = "ngForm" (ngSubmit)="submitData(dataForm)" enctype="multipart/form-data" novalidate>
-    <div class="control">
-      <!-- error or success message will be shown here -->
-      <p *ngIf="submitted">{{returnMsg}}</p>
-    </div>
-    <div class="control">
-      <label>First name: </label>
-      <input ngModel name="first_name" type="text">
-    </div>
+<router-outlet>
 
-
-    <div class="control">
-      <label>Last name: </label>
-      <input ngModel name="last_name" type="text">
-    </div>
-
-    <div class="control">
-      <label>Email: </label>
-      <input ngModel name="email" type="email">
-    </div>
-
-    <div class="control">
-      <label>Profile Picture: </label>
-      <input ngModel name="photo" type="file" (change)="fileEvent($event, dataForm)">
-    </div>
-
-    <div class="control">
-      <button type="submit">Submit</button>
-    </div>
-  </form>
-</div>
+    
+</router-outlet>
