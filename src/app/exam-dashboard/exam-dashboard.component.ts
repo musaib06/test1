@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { element, Key } from 'protractor';
 import { idText } from 'typescript';
+import { CustomDbService } from '../services/dbservice.service';
 
-import { QuestionAnswers } from './exam.model';
+import { QuestionAnswers, QuizQuestion } from './exam.model';
 
 @Component({
   selector: 'app-exam-dashboard',
@@ -16,22 +17,48 @@ export class ExamDashboardComponent implements OnInit {
   displayStyle = 'none';
   public index: number = 0;
 
+  public question:QuizQuestion;
+
   public ans: string = '';
-  constructor(private dbService: NgxIndexedDBService) {}
-  ngOnInit(): void {
-    this.getAllData();
-  }
-  getAllData() {
+  public questionKey=2
+  public hasData:boolean;
+ constructor(private customDbService:CustomDbService,private dbService: NgxIndexedDBService)  { 
   
-    this.dbService.getByID('adminTable',4).subscribe((res) => {
-      // res.forEach(async (questionDB) => {
-      //   // let question = await this.addQuestionToUI(questionDB);
-      //   this.quiz
-      // });
-      this.quiz= res;
-      console.log(this.quiz);
+  }
+  ngOnInit(): void{
+  this.getData()
+  };
+ 
+
+  getData(){  
+    // this.question=this.customDbService.getQuizQuestion(this.questionKey)
+    this.dbService.getByKey('adminTable', this.questionKey).subscribe((res) => {
+      this.question = res;
+      this.hasData=true
+
+    
+
     });
   }
+  fetchNextQuestion(){
+    this.dbService.getByKey('adminTable',this.questionKey ).subscribe((res) => {
+      this.question = res;
+      if(this.question){
+        this.hasData=true
+      }
+      else{
+        this.hasData=false
+      }
+    });
+  }
+
+  submitResponse(question){ 
+    this.questionKey=this.questionKey+1
+    console.log('submitting.',question)
+   this.fetchNextQuestion();
+  
+  }
+}
   // async addQuestionToUI(questionDb: any) {
   //   // let question: QuestionAnswers = {
   //   //   id: questionDb.id,
@@ -61,27 +88,27 @@ export class ExamDashboardComponent implements OnInit {
   //   //     // console.log(quiz);
   //   //   });
   // }
-  submitResponse(selectedItem) {
-    let answer = this.ans;
-    let question_id = selectedItem.id;
-    this.submitted = true;
-    this.dbService
-      .add('userResponse', {
-        question_id,
-        answer,
-        user_id: 5,
-      })
-      .subscribe((key) => {
-        this.getAllData();
-        this.displayStyle = 'none';
-      });
-  }
-  changeQuestion(direction: string) {
-    if (direction === 'next') {
-      this.index = this.index + 1;
-    } else {
-      this.index = this.index - 1;
-    }
-    console.log('question', this.index);
-  }
-}
+  // submitResponse(selectedItem) {
+  //   let answer = this.ans;
+  //   let question_id = selectedItem.id;
+  //   this.submitted = true;
+  //   this.dbService
+  //     .add('userResponse', {
+  //       question_id,
+  //       answer,
+  //       user_id: 5,
+  //     })
+  //     .subscribe((key) => {
+  //       this.getAllData();
+  //       this.displayStyle = 'none';
+  //     });
+  // }
+  // changeQuestion(direction: string) {
+  //   if (direction === 'next') {
+  //     this.index = this.index + 1;
+  //   } else {
+  //     this.index = this.index - 1;
+  //   }
+  //   console.log('question', this.index);
+  // }
+

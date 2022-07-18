@@ -23,10 +23,10 @@ const dbConfig: DBConfig = {
       storeSchema: [
         { name: 'question', keypath: 'question', options: { unique: false} },
         { name: 'answer', keypath: 'answer', options: { unique: false}  },
-        // {name: 'profile_photo', keypath: 'profile_photo', options: { unique: false}},
-        // { name: 'option2', keypath: 'option2', options: { unique: false} },
-        // { name: 'option3', keypath: 'option3', options: { unique: false} },
-        // { name: 'option4', keypath: 'option4', options: { unique: false} },
+        {name: 'profile_photo', keypath: 'profile_photo', options: { unique: false}},
+        { name: 'option2', keypath: 'option2', options: { unique: false} },
+        { name: 'option3', keypath: 'option3', options: { unique: false} },
+        { name: 'option4', keypath: 'option4', options: { unique: false} },
       ],
     },
     {

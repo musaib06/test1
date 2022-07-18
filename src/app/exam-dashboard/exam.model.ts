@@ -9,3 +9,12 @@ export interface QuestionAnswers {
   question: string;
   options: Answers[];
 }
+
+export interface QuizQuestion {
+  id?: number | string;
+  question: string;
+  answer: string;
+  option2: string;
+  option3: string;
+  option4: string;
+}
