@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { StorageService } from '../storage.service';
-import { editQuestion } from './admin.model';
+import { addQuestions } from './admin.model';
 
 @Component({
   selector: 'app-admin',
@@ -13,24 +13,15 @@ import { editQuestion } from './admin.model';
 export class AdminComponent implements OnInit {
   public isUpdate: boolean = false;
   public isMenuCollapsed = true;
-  // updateUser: editQuestion;
-  // user: Question;
+  
+
 
   submitted: boolean = false;
 
   returnMsg: string;
   up: boolean = false;
   showUpdate: boolean = false;
-
-  public user: any = {
-    id: 0,
-    question: '',
-    answer: '',
-    option2: '',
-    option3: '',
-    option4: '',
-    //  profile_photo:''
-  };
+  public user:addQuestions[]=[];
 
   constructor(private dbService: NgxIndexedDBService ,private storageService:StorageService,private route:ActivatedRoute) {
     // this.getFromIndexDb(this.email)
@@ -126,7 +117,7 @@ export class AdminComponent implements OnInit {
 
   submitTable: any;
   openPopup() {
-    this.user = {};
+    // this.user = {};
     console.log('working');
     this.displayStyle = 'block';
   }

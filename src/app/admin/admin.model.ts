@@ -8,6 +8,15 @@ options:{
   option4: string;
 }}
 
+export interface addQuestions {
+  id?: number | string;
+  question: string;
+  answer: string;
+  option2: string;
+  option3: string;
+  option4: string;
+}
+
 
 
 // export interface submitQuestion{
