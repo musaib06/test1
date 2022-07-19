@@ -70,11 +70,15 @@
               <!-- <td ><img alt="item" src="{{data.profile_photo}}" >h</td> -->
               <td>
 
-                <button class="matbutton">
-                  <mat-icon (click)="editdata(data.id)"
+                <!-- <button class="matbutton">
+                  <mat-icon 
+                
                     style="   font-size: 35px; height: 35px ; width: 35px ;color: rgb(59, 106, 236); ">mode_edit
+                  <a routerLink="/update-question/{{data.id}}"></a>
                   </mat-icon>
-                </button>
+                </button> -->
+
+                <button type="button" ><a routerLink="/update-question/{{data.id}}">Edit</a></button>
 
 
                 <!-- <button (click)="deleteData(data.id)" class="btn btn-danger ">delete</button> -->
@@ -154,50 +158,6 @@
   </div>
 </div>
 
-<div class="container">
+ 
 
-  <div *ngIf="isUpdate">
 
-    <h1>
-      <form #dataaFormm="ngForm" (ngSubmit)="updateData(dataaFormm)" enctype="multipart/form-data" novalidate>
-        <div class="control">
-          <!-- error or success message will be shown here -->
-          <p *ngIf="submitted">{{ returnMsg }}</p>
-        </div>
-        <div class="control">
-          <input ngModel name="question" type="text" value="{{ updateUser.question }}" class="inputfield"
-            placeholder="Enter Question" />
-        </div>
-        <div class="control">
-          <input ngModel name="answer" type="text" value="{{ updateUser.answer }}" class="inputfield"
-            placeholder="Correct option" />
-        </div>
-
-        <div class="control">
-          <input ngModel name="option2" type="text" value="{{ updateUser.option2 }}" class="inputfield"
-            placeholder="Option two" />
-        </div>
-
-        <div class="control">
-          <input ngModel name="option3" type="text" value="{{ updateUser.option3 }}" class="inputfield"
-            placeholder="Option three" />
-        </div>
-
-        <div class="control">
-          <input ngModel name="option4" type="text" value="{{ updateUser.option4 }}" class="inputfield"
-            placeholder="Option four" />
-        </div>
-
-        <div class="control">
-          <button type="submit" class="btn btn-primary">update</button>
-
-          <button type="button" class="btn btn-warning mx-3" (click)="closeUpdate()">
-            Back
-          </button>
-        </div>
-
-      </form>
-    </h1>
-  </div>
-
-</div>

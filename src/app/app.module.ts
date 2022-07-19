@@ -12,10 +12,11 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { UpdateQuestionComponent } from './update-question/update-question.component';
 
 const dbConfig: DBConfig = {
   name: 'quizDB',
-  version: 3,
+  version: 4,
   objectStoresMeta: [
     {
       store: 'adminTable',
@@ -23,7 +24,6 @@ const dbConfig: DBConfig = {
       storeSchema: [
         { name: 'question', keypath: 'question', options: { unique: false} },
         { name: 'answer', keypath: 'answer', options: { unique: false}  },
-        // {name: 'profile_photo', keypath: 'profile_photo', options: { unique: false}},
         { name: 'option2', keypath: 'option2', options: { unique: false} },
         { name: 'option3', keypath: 'option3', options: { unique: false} },
         { name: 'option4', keypath: 'option4', options: { unique: false} },
@@ -35,7 +35,7 @@ const dbConfig: DBConfig = {
       storeSchema: [
         { name: 'user_id', keypath: 'user_id', options: { unique: false } },  
         { name: 'question_id', keypath: 'question_id', options: { unique: true} }, 
-        { name: 'answer', keypath: 'answer', options: { unique: false } },       
+        { name: 'selectedOption', keypath: 'selectedOption', options: { unique: false } },       
         { name: 'isCorrect', keypath: 'isCorrect', options: { unique: false } },       
       ],
     },
@@ -48,6 +48,7 @@ const dbConfig: DBConfig = {
     AdminComponent,
     LoginComponent,
     ExamDashboardComponent,
+    UpdateQuestionComponent,
   ],
   imports: [
     BrowserModule,

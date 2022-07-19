@@ -1,9 +1,8 @@
 <h1>
     <div class="container mt-sm-5 my-5">
-        <div class="question ml-sm-5 pl-sm-5 pt-2" *ngIf="hasData" >
+        <div class="question ml-sm-5 pl-sm-5 pt-2" *ngIf="hasData">
             <form #dataForm="ngForm" (ngSubmit)="submitResponse(question)">
                 <div class="py-2 h5 card px-3 bg-success" id="options">
-
                     <b name="questions">Q.no- {{question.id}} {{question.question }} </b>
                 </div>
                 <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
@@ -16,28 +15,29 @@
                         <span class="checkmark"></span>
                     </label>
                     <label class="options"><b>{{question.option3 }}</b>
-
                         <input type="radio" name="option3" value="{{question.option3}}" [(ngModel)]='ans'>
                         <span class="checkmark"></span>
                     </label>
                     <label class="options"><b>{{question.option4 }}</b>
-
                         <input type="radio" name="option4" value="{{question.option4 }}" [(ngModel)]='ans'>
                         <span class="checkmark"></span>
-                    </label>
-
-                    <!-- <button type="submit" class="btn btn-primary float-right" >Nextsubmit </button> -->
-
+                    </label><!-- <button type="submit" class="btn btn-primary float-right" >Nextsubmit </button> -->
                     <button class="btn btn-primary float-right" type="submit">Next</button>
                     <button class="btn btn-danger">Previous</button>
                 </div>
             </form>
         </div>
         <div *ngIf="!hasData">
-                 <div>
-                    No Questions are availabile
-                 </div>
-
+            <div>
+                 Questions are Not availabile
+            </div>
         </div>
     </div>
 </h1>
+
+<input type="text" #box (keyup)="gett(box.value)">{{box.value}}<br>
+<input type="text" #box1 (keydown)="gett(box1.value)"><br>
+<input type="text" #box2 (blur)="gett(box2.value)"><br>
+<input type="text" #box3 (input)="gett(box3.value)"><br >
+<h1  #box4 (mouseover)="gettt(box4.val)"> hello</h1><br >
+<h1  #box5 (mouseleave)="gettt(box5.val)">hey </h1>

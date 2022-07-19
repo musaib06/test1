@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { StorageService } from '../storage.service';
 import { editQuestion } from './admin.model';
@@ -12,7 +13,7 @@ import { editQuestion } from './admin.model';
 export class AdminComponent implements OnInit {
   public isUpdate: boolean = false;
   public isMenuCollapsed = true;
-  updateUser: editQuestion;
+  // updateUser: editQuestion;
   // user: Question;
 
   submitted: boolean = false;
@@ -31,10 +32,14 @@ export class AdminComponent implements OnInit {
     //  profile_photo:''
   };
 
-  constructor(private dbService: NgxIndexedDBService ,private storageService:StorageService) {
+  constructor(private dbService: NgxIndexedDBService ,private storageService:StorageService,private route:ActivatedRoute) {
     // this.getFromIndexDb(this.email)
     this.getAllData();
+
+    
   }
+
+ 
 
   submit(form: NgForm) {
     let questions = form.value;
@@ -92,15 +97,15 @@ export class AdminComponent implements OnInit {
   // }
 
   editTable: any;
-  editdata(id: number) {
-    this.dbService.getByID('adminTable', id).subscribe((res) => {
-      var editTable = res;
-      this.updateUser = editTable;
-      this.updateUser.id = id;
-      this.showUpdate = true;
-    });
-    this.isUpdate = true;
-  }
+  // editdata(id: number) {
+  //   this.dbService.getByID('adminTable', id).subscribe((res) => {
+  //     var editTable = res;
+  //     this.updateUser = editTable;
+  //     this.updateUser.id = id;
+  //     this.showUpdate = true;
+  //   });
+  //   this.isUpdate = true;
+  // }
   deleteData(id) {
     var key = id;
 
@@ -130,31 +135,31 @@ export class AdminComponent implements OnInit {
     this.isUpdate = false;
   }
 
-  updateData(formm) {
-    const dataa = formm.value;
-    console.log(dataa);
+  // updateData(formm) {
+  //   const dataa = formm.value;
+  //   console.log(dataa);
 
-    //add dataa to indexedDB
-    this.dbService
-      .update('adminTable', {
-        id: this.updateUser.id,
-        question: dataa.question,
-        answer: dataa.answer,
-        // profile_photo: '',
-        option2: dataa.option2,
-        option3: dataa.option3,
-        option4: dataa.option4,
-      })
-      .subscribe((key) => {
-        alert('updated successfully');
-        // console.log('key: ', key);
-        this.getAllData();
-        this.isUpdate = false;
-        this.displayStyle = 'none';
-      });
+  //   //add dataa to indexedDB
+  //   this.dbService
+  //     .update('adminTable', {
+  //       id: this.updateUser.id,
+  //       question: dataa.question,
+  //       answer: dataa.answer,
+  //       // profile_photo: '',
+  //       option2: dataa.option2,
+  //       option3: dataa.option3,
+  //       option4: dataa.option4,
+  //     })
+  //     .subscribe((key) => {
+  //       alert('updated successfully');
+  //       // console.log('key: ', key);
+  //       this.getAllData();
+  //       this.isUpdate = false;
+  //       this.displayStyle = 'none';
+  //     });
 
-    console.log('your data is invalid ');
-  }
+  //   console.log('your data is invalid ');
+  // }
   ngOnInit(): void {
     // this.addDummyData();
   }

@@ -1,0 +1,47 @@
+ <div class="container">
+
+    <div >
+  
+      <h1>
+        <form #dataaFormm="ngForm" (ngSubmit)="updateData(dataaFormm)" enctype="multipart/form-data" novalidate>
+          <div class="control">
+             error or success message will be shown here -->
+            <!-- <p *ngIf="submitted">{{ returnMsg }}</p> -->
+           </div>
+          <div class="control">
+            <input  name="question" type="text" ngModel="{{ updateUser?.question }}" class="inputfield"
+              placeholder="Enter Question" />
+          </div>
+          <div class="control">
+            <input  name="answer" type="text" ngModel="{{ updateUser?.answer }}" class="inputfield"
+              placeholder="Correct option" />
+          </div>
+  
+          <div class="control">
+            <input  name="option2" type="text" ngModel="{{ updateUser?.option2 }}" class="inputfield"
+              placeholder="Option two" />
+          </div>
+  
+          <div class="control">
+            <input  name="option3" type="text" ngModel="{{ updateUser?.option3 }}" class="inputfield"
+              placeholder="Option three" />
+          </div>
+  
+          <div class="control">
+            <input  name="option4" type="text" ngModel="{{ updateUser?.option4 }}" class="inputfield"
+              placeholder="Option four" />
+          </div>
+  
+          <div class="control">
+            <button type="submit" class="btn btn-primary">update</button>
+  
+            <button type="button" class="btn btn-warning mx-3" >
+              Back
+            </button>
+          </div>
+  
+        </form>
+      </h1>
+    </div>
+  
+  </div>  

@@ -19,6 +19,10 @@ export class ExamDashboardComponent implements OnInit {
   public ans: string = '';
   public questionKey = 1;
   public hasData: boolean;
+
+ public isCorrect: boolean;
+
+
   constructor(
     private customDbService: CustomDbService,
     private dbService: NgxIndexedDBService
@@ -30,13 +34,17 @@ export class ExamDashboardComponent implements OnInit {
   getData() {
     // this.question=this.customDbService.getQuizQuestion(this.questionKey)
     this.dbService.getByKey('adminTable', this.questionKey).subscribe((res) => {
-      this.question = res;
+      
+      this.question =res;
+    
       this.hasData = true;
     });
   }
   fetchNextQuestion() {
     this.dbService.getByKey('adminTable', this.questionKey).subscribe((res) => {
+      // Math.floor(Math.random() *this.questionKey);
       this.question = res;
+      this.questionKey=Math.floor(Math.random()*5);
       if (this.question) {
         this.hasData = true;
       } else {
@@ -50,13 +58,17 @@ export class ExamDashboardComponent implements OnInit {
     console.log('submitting.', question);
     this.fetchNextQuestion();
     {
-        let answer = this.ans;
-        let question_id = question.id;
+        let selectedOption = this.ans;
+        let question_id = question.id
+        if(this.isCorrect=question.answer){
+           this.isCorrect=true;
+        }
+       
         this.submitted = true;
         this.dbService
           .add('userResponse', {
             question_id,
-            answer,
+            selectedOption,
             user_id: 5,
           })
           .subscribe((key) => {
@@ -64,6 +76,13 @@ export class ExamDashboardComponent implements OnInit {
             this.displayStyle = 'none';
           });
       }
+}
+
+gett( value:number){
+  console.log(value)
+}
+gettt( val:string){
+  console.log(val='hello')
 }
 // async addQuestionToUI(questionDb: any) {
 //   // let question: QuestionAnswers = {
