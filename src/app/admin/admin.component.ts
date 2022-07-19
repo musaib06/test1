@@ -13,24 +13,22 @@ import { addQuestions } from './admin.model';
 export class AdminComponent implements OnInit {
   public isUpdate: boolean = false;
   public isMenuCollapsed = true;
-  
-
 
   submitted: boolean = false;
 
   returnMsg: string;
   up: boolean = false;
   showUpdate: boolean = false;
-  public user:addQuestions[]=[];
+  public user: addQuestions[] = [];
 
-  constructor(private dbService: NgxIndexedDBService ,private storageService:StorageService,private route:ActivatedRoute) {
+  constructor(
+    private dbService: NgxIndexedDBService,
+    private storageService: StorageService,
+    private route: ActivatedRoute
+  ) {
     // this.getFromIndexDb(this.email)
     this.getAllData();
-
-    
   }
-
- 
 
   submit(form: NgForm) {
     let questions = form.value;
@@ -60,7 +58,7 @@ export class AdminComponent implements OnInit {
     }
     form.resetForm();
   }
-  
+
   fileData: any;
   fileEvent(e, form) {
     //get attached file
@@ -77,26 +75,6 @@ export class AdminComponent implements OnInit {
   }
   search: any;
   data: any;
-  //function to retrive all by index
-  // getFromIndexDb(question) {
-  //   this.dbService
-  //     .getAllByIndex('adminTable', 'question', IDBKeyRange.only(question))
-  //     .subscribe((res) => {
-  //       this.data = res;
-  //       console.log(res);
-  //     });
-  // }
-
-  editTable: any;
-  // editdata(id: number) {
-  //   this.dbService.getByID('adminTable', id).subscribe((res) => {
-  //     var editTable = res;
-  //     this.updateUser = editTable;
-  //     this.updateUser.id = id;
-  //     this.showUpdate = true;
-  //   });
-  //   this.isUpdate = true;
-  // }
   deleteData(id) {
     var key = id;
 
@@ -117,7 +95,6 @@ export class AdminComponent implements OnInit {
 
   submitTable: any;
   openPopup() {
-    // this.user = {};
     console.log('working');
     this.displayStyle = 'block';
   }

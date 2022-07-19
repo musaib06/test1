@@ -4,10 +4,7 @@
   
       <h1>
         <form #dataaFormm="ngForm" (ngSubmit)="updateData(dataaFormm)" enctype="multipart/form-data" novalidate>
-          <div class="control">
-             error or success message will be shown here -->
-            <!-- <p *ngIf="submitted">{{ returnMsg }}</p> -->
-           </div>
+
           <div class="control">
             <input  name="question" type="text" ngModel="{{ updateUser?.question }}" class="inputfield"
               placeholder="Enter Question" />

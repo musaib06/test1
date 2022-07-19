@@ -55,7 +55,6 @@
               <th scope="col">Option2</th>
               <th scope="col">Option3</th>
               <th scope="col">Option4</th>
-              <!-- <th scope="col">Peofile</th> -->
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -67,20 +66,13 @@
               <td>{{ data.option2 }}</td>
               <td>{{ data.option3 }}</td>
               <td>{{ data.option4 }}</td>
-              <!-- <td ><img alt="item" src="{{data.profile_photo}}" >h</td> -->
               <td>
-
-                <!-- <button class="matbutton">
-                  <mat-icon 
-                
-                    style="   font-size: 35px; height: 35px ; width: 35px ;color: rgb(59, 106, 236); ">mode_edit
-                  <a routerLink="/update-question/{{data.id}}"></a>
-                  </mat-icon>
-                </button> -->
-
-                <button type="button" ><a routerLink="/update-question/{{data.id}}">Edit</a></button>
-
-
+                <button class="matbutton">
+                  <mat-icon
+                    style="   font-size: 35px; height: 35px ; width: 35px ;color: rgb(59, 106, 236);  border: 0ch; "
+                    routerLink="/update-question/{{data.id}}">
+                    mode_edit</mat-icon>
+                </button>
                 <!-- <button (click)="deleteData(data.id)" class="btn btn-danger ">delete</button> -->
                 <button class="matbutton">
                   <mat-icon (click)="deleteData(data.id)"
@@ -94,10 +86,6 @@
         </table>
       </div>
     </div>
-
-
-
-
     <!-- dashboard page end here -->
     <!--pop up -->
     <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{ display: displayStyle }">
@@ -108,10 +96,10 @@
 
           <div class="modal-body">
             <form #dataForm="ngForm" (ngSubmit)="submit(dataForm)">
-              <div class="control">
-                <!-- error or success message will be shown here -->
+              <!-- <div class="control">
+                 error or success message will be shown here 
                 <p *ngIf="submitted">{{ returnMsg }}</p>
-              </div>
+              </div> -->
 
 
               <input ngModel name="question" type="text" value="{{ user.question }}" class="inputfield"
@@ -157,7 +145,3 @@
     </div>
   </div>
 </div>
-
- 
-
-

@@ -41,8 +41,7 @@ export class UpdateQuestionComponent implements OnInit {
       option2:formm.value.option2,
       option3:formm.value.option3,
       option4:formm.value.option4
-    }).subscribe((result)=>{
-    });
+    }).subscribe
     
   }
 }
